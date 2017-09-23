@@ -3,7 +3,7 @@ LABEL maintainer "Nathaniel Watson nathankw@stanford.edu"
 #comes with python/2.7.5, but I'll install 2.7.14 and make that the default.
 
 #PURPOSE: Installs many core packages on top of the centos:centos6 base image, along with the following programming languages - 
-# 1) JRE v1.8.0_91
+# 1) JRE v8u144
 # 2) R v3.2.3
 # 3) Python 2.7.14
 # 4) Perl v5.10.1 (as part of the "Developoment Tools" yum package). This doesn't come with cpan, cpanm, or cpanp. I was unable to install
@@ -17,8 +17,8 @@ RUN yum clean all
 # When downloading the JRE via the browser, Oracle now requires acceptance of terms. 
 # https://ivan-site.com/2012/05/download-oracle-java-jre-jdk-using-a-script found a way to do this with wget, which I use here as well.
 RUN cd /srv/src && \
-	wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u91-b14/jre-8u91-linux-x64.rpm \
-	&& yum install -y /srv/src/jre-8u91-linux-x64.rpm
+	wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jre-8u144-linux-x64.rpm \
+	&& yum install -y /srv/src/jre-8u144-linux-x64.rpm
 
 #INSTALL R v3.2.3.
 # As stated in https://cran.r-project.org/bin/linux/redhat/README: 
