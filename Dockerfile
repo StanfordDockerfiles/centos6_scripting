@@ -48,7 +48,7 @@ RUN curl -O https://www.python.org/ftp/python/2.7.14/Python-2.7.14.tgz \
 	&& cd Python-2.7.14 \
 	&& ./configure \
 	&& make \
-	&& make install
+	&& make install \
 	&& curl -O https://bootstrap.pypa.io/get-pip.py \
 	&& python get-pip.py \
 	&& pip install numpy \
