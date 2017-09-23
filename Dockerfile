@@ -1,4 +1,4 @@
-FROM centos:centos6
+FROM nathankw/centos6_essentials
 LABEL maintainer "Nathaniel Watson nathankw@stanford.edu"
 #comes with python/2.7.5, but I'll install 2.7.14 and make that the default.
 
@@ -10,21 +10,6 @@ LABEL maintainer "Nathaniel Watson nathankw@stanford.edu"
 #    cpanm using the instruction at http://search.cpan.org/~miyagawa/App-cpanminus-1.7043/lib/App/cpanminus.pm to run 
 #		 "curl -L https://cpanmin.us | perl - --sudo App::cpanminus". It will be best to redo the Perl install from source. 
 
-#RUN yum update -y && yum install -y wget git gcc unzip gcc-c++ zlib-devel openssl-devel sqlite-devel bzip2-devel ncurses-devel lapack-dev blas-dev
-RUN mkdir /srv/src /srv/software
-#INSTALL some core packages.
-# gcc-c++ needed for running g++ to make tools, such as Bowtie2.
-# gcc needed for installing Python.
-# lapack-dev blas-dev for installing scipy in Python.
-# Development Tools installs 28 packages, and their dependencies. The number of dependencies installed on a base image of centos:centos6 were 101, notably of which are Perl v5.10.1, git v1.7.1, unzip
-RUN yum update -y && yum groupinstall -y 'Development Tools' && yum install -y \
-	wget \
-	bzip2-devel \
-	lapack-devel blas-devel \
-	ncurses-devel \
-	openssl-devel \
-	sqlite-devel \
-	zlib-devel 
 #'yum clean all' so this error doesn't pop up when trying to install Java: Rpmdb checksum is invalid: dCDPT(pkg checksums)
 RUN yum clean all
 #INSTALL JRE v1.8.0_91.
